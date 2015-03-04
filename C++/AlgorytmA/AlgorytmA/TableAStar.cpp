@@ -178,8 +178,6 @@ void CTableAStar::setNeighbours()
 				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
 				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j+1]));
 			}
-
-
 		}
 	}
 
@@ -195,7 +193,10 @@ string CTableAStar::solve()
 		oTempBlock = findMinFFromOL();
 		removeOL(oTempBlock->getX(), oTempBlock->getY());
 		addCL(oTempBlock->getX(), oTempBlock->getY());
-		
+		if (oTempBlock->getX() == 5 && oTempBlock->getY() == 6)
+		{
+			printTempState();
+		}
 		if (oTempBlock == m_poEndPoint)
 		{
 			printResult();
@@ -203,10 +204,6 @@ string CTableAStar::solve()
 		}
 		for (auto i = 0; i < oTempBlock->getNeighbours()->size(); i++)
 		{	
-			if (oTempBlock->getNeighbours()->at(i)->getX() == 3 && oTempBlock->getNeighbours()->at(i)->getY() == 8)
-			{
-				cout << "";
-			}
 			if (getCL(oTempBlock->getNeighbours()->at(i)) || !canMove(oTempBlock,oTempBlock->getNeighbours()->at(i)))
 			{
 				continue;
@@ -227,7 +224,6 @@ string CTableAStar::solve()
 					oTempBlock->getNeighbours()->at(i)->calculateNewF();
 				}
 			}
-
 		}
 	}
 	return m_strPath;
@@ -266,44 +262,40 @@ void CTableAStar::printResult()
 	CBlock* oTemp = m_poEndPoint;
 	while (NULL != oTemp)
 	{
-		cout << oTemp->getX() << " - " << oTemp->getY() << " - " << oTemp->getF() <<  endl;
+		cout << oTemp->getX() << " - " << oTemp->getY() <<  endl;
 		oTemp = oTemp->getParent();
 	}
 }
 
-bool CTableAStar::canMove(CBlock* a_oParent, CBlock* a_oBlock)
+bool CTableAStar::canMove(CBlock* a_oBlock, CBlock* a_oNeighbour)
 {
 	bool bReturn = true;
-	if (a_oBlock->getCanMove())
+	if (a_oNeighbour->getCanMove())
 	{
-		if (a_oBlock->getX() == 1 && a_oBlock->getY() == 7 && a_oParent->getX() == 0 && a_oParent->getY() == 6)
+		if (a_oNeighbour->getX() == a_oBlock->getX() + 1 && a_oNeighbour->getY() == a_oBlock->getY() + 1)
 		{
-			bReturn = bReturn;
-		}
-		if (a_oBlock->getX() == a_oParent->getX() + 1 && a_oBlock->getY() == a_oParent->getY() + 1)
-		{
-			if (!m_poTable[a_oParent->getX() + 1][a_oParent->getY()].getCanMove() || !m_poTable[a_oParent->getX()][a_oParent->getY() + 1].getCanMove())
+			if (!m_poTable[a_oBlock->getX() + 1][a_oBlock->getY()].getCanMove() || !m_poTable[a_oBlock->getX()][a_oBlock->getY() + 1].getCanMove())
 			{
 				bReturn = false;
 			}
 		}
-		else if (a_oBlock->getX() == a_oParent->getX() + 1 && a_oBlock->getY() == a_oParent->getY() - 1)
+		else if (a_oNeighbour->getX() == a_oBlock->getX() + 1 && a_oNeighbour->getY() == a_oBlock->getY() - 1)
 		{
-			if (!m_poTable[a_oParent->getX()][a_oParent->getY() - 1].getCanMove() || !m_poTable[a_oParent->getX() + 1][a_oParent->getY()].getCanMove())
+			if (!m_poTable[a_oBlock->getX()][a_oBlock->getY() - 1].getCanMove() || !m_poTable[a_oBlock->getX() + 1][a_oBlock->getY()].getCanMove())
 			{
 				bReturn = false;
 			}
 		}
-		else if (a_oBlock->getX() == a_oParent->getX() - 1 && a_oBlock->getY() == a_oParent->getY() + 1)
+		else if (a_oNeighbour->getX() == a_oBlock->getX() - 1 && a_oNeighbour->getY() == a_oBlock->getY() + 1)
 		{
-			if (!m_poTable[a_oParent->getX()][a_oParent->getY() + 1].getCanMove() || !m_poTable[a_oParent->getX() - 1][a_oParent->getY()].getCanMove())
+			if (!m_poTable[a_oBlock->getX()][a_oBlock->getY() + 1].getCanMove() || !m_poTable[a_oBlock->getX() - 1][a_oBlock->getY()].getCanMove())
 			{
 				bReturn = false;
 			}
 		}
-		else if (a_oBlock->getX() == a_oParent->getX() - 1 && a_oBlock->getY() == a_oParent->getY() - 1)
+		else if (a_oNeighbour->getX() == a_oBlock->getX() - 1 && a_oNeighbour->getY() == a_oBlock->getY() - 1)
 		{
-			if (!m_poTable[a_oParent->getX()][a_oParent->getY() - 1].getCanMove() || !m_poTable[a_oParent->getX() - 1][a_oParent->getY()].getCanMove())
+			if (!m_poTable[a_oBlock->getX()][a_oBlock->getY() - 1].getCanMove() || !m_poTable[a_oBlock->getX() - 1][a_oBlock->getY()].getCanMove())
 			{
 				bReturn = false;
 			}
@@ -313,7 +305,17 @@ bool CTableAStar::canMove(CBlock* a_oParent, CBlock* a_oBlock)
 	{
 		bReturn = false;
 	}
-	
-
 	return bReturn;
+}
+
+void CTableAStar::printTempState()
+{
+	for (int i = 0; i < m_iX; i++)
+	{
+		for (int j = 0; j < m_iY; j++)
+		{
+			cout << m_poTable[i][j].getX() << " - " << m_poTable[i][j].getY() << " - F: " << m_poTable[i][j].getF()
+				<< " G: " << m_poTable[i][j].getG() << " H: " << m_poTable[i][j].getH() << endl;
+		}
+	}
 }

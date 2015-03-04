@@ -26,6 +26,7 @@ public:
 	bool getOL(CBlock*);
 	void printResult();
 	bool canMove(CBlock*, CBlock*);
+	void printTempState();
 private:
 	CBlock** m_poTable;
 	CBlock* m_poStartPoint;
