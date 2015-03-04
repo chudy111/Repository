@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <math.h>
 using namespace std;
 class CBlock
 {
@@ -23,6 +24,9 @@ public:
 	vector<CBlock*>* getNeighbours();
 	CBlock* getParent();
 	void setParent(CBlock*);
+	void calculateFGH(CBlock*);
+	int calculateNewG(CBlock*);
+	void calculateNewF();
 private:
 	CBlock* m_oParent;
 	vector<CBlock*>* m_oNeighbours;

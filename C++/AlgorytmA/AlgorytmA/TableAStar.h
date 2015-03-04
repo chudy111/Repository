@@ -14,12 +14,18 @@ public:
 	void setStart(int, int);
 	void setEnd(int, int);
 	void addOL(int, int);
+	void addOL(CBlock*);
 	void removeOL(int, int);
 	void addCL(int, int);
+	void addCL(CBlock*);
 	void removeCL(int, int);
 	string solve();
 	CBlock* findMinFFromOL();
 	void setNeighbours();
+	bool getCL(CBlock*);
+	bool getOL(CBlock*);
+	void printResult();
+	bool canMove(CBlock*, CBlock*);
 private:
 	CBlock** m_poTable;
 	CBlock* m_poStartPoint;

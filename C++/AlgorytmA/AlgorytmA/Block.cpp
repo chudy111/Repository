@@ -6,10 +6,12 @@ CBlock::CBlock()
 {
 	m_iX = 0;
 	m_iY = 0;
-	m_bCanMove = false;
+	m_bCanMove = true;
 	m_iF = 0;
 	m_iG = 0;
 	m_iH = 0;
+	m_oParent = NULL;
+	m_oNeighbours = new vector<CBlock*>();
 }
 
 CBlock::CBlock(int a_iX, int a_iY)
@@ -104,4 +106,41 @@ CBlock* CBlock::getParent()
 void CBlock::setParent(CBlock* a_oParent)
 {
 	m_oParent = a_oParent;
+}
+
+void CBlock::calculateFGH(CBlock* a_oEnd)
+{
+
+	m_iH = abs(abs(a_oEnd->getY() - m_iY) - abs(a_oEnd->getX() - m_iX)) * 10;
+	m_iH += abs(a_oEnd->getX() - m_iX) * 15;
+	
+	if (m_iX == m_oParent->getX() || m_iY == m_oParent->getY())
+	{
+		m_iG = m_oParent->getG() + 10;
+	}
+	else
+	{
+		m_iG = m_oParent->getG() + 15;
+	}
+
+	m_iF = m_iG + m_iH;
+}
+
+int CBlock::calculateNewG(CBlock* a_oNewParent)
+{
+	int iNewG;
+	if (m_iX == a_oNewParent->getX() || m_iY == a_oNewParent->getY())
+	{
+		iNewG = a_oNewParent->getG() + 10;
+	}
+	else
+	{
+		iNewG = a_oNewParent->getG() + 15;
+	}
+	return iNewG;
+}
+
+void CBlock::calculateNewF()
+{
+	m_iF = m_iG + m_iH;
 }
