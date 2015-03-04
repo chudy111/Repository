@@ -87,6 +87,86 @@ CBlock* CTableAStar::findMinFFromOL()
 	return oMinBlock;
 }
 
+void CTableAStar::setNeighbours()
+{
+	for (int i=0; i<m_iX; i++)
+	{
+		for (int j=0; j<m_iY; j++)
+		{
+			if (0 == i && 0 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+			}
+			else if ( m_iX-1 == i && 0 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j+1]));
+			}
+			else if ( m_iX-1 == i && m_iY-1 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+			}
+			else if ( 0 == i && m_iY-1 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+			}
+			else if (0 == i)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j-1]));
+			}
+			else if (0 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+			}
+			else if (m_iX-1 == i)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+			}
+			else if (m_iY-1 == j)
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+			}
+			else
+			{
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i-1][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i][j+1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j-1]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j]));
+				m_poTable[i][j].addNeighbour(&(m_poTable[i+1][j+1]));
+			}
+
+
+		}
+	}
+
+}
+
 
 string CTableAStar::solve()
 {

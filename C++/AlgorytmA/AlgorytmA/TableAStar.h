@@ -19,6 +19,7 @@ public:
 	void removeCL(int, int);
 	string solve();
 	CBlock* findMinFFromOL();
+	void setNeighbours();
 private:
 	CBlock** m_poTable;
 	CBlock* m_poStartPoint;

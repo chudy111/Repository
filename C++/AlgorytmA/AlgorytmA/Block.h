@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+using namespace std;
 class CBlock
 {
 public:
@@ -17,7 +19,13 @@ public:
 	int getX();
 	int getY();
 	bool getCanMove();
+	void addNeighbour(CBlock*);
+	vector<CBlock*>* getNeighbours();
+	CBlock* getParent();
+	void setParent(CBlock*);
 private:
+	CBlock* m_oParent;
+	vector<CBlock*>* m_oNeighbours;
 	int m_iF;
 	int m_iG;
 	int m_iH;

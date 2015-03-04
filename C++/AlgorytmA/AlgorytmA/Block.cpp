@@ -85,3 +85,23 @@ int CBlock::getY()
 {
 	return m_iY;
 }
+
+void CBlock::addNeighbour(CBlock* a_oNeighbour)
+{
+	m_oNeighbours->push_back(a_oNeighbour);
+}
+
+vector<CBlock*>* CBlock::getNeighbours()
+{
+	return m_oNeighbours;
+}
+
+CBlock* CBlock::getParent()
+{
+	return m_oParent;
+}
+
+void CBlock::setParent(CBlock* a_oParent)
+{
+	m_oParent = a_oParent;
+}
