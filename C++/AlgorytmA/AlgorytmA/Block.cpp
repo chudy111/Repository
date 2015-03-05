@@ -110,10 +110,15 @@ void CBlock::setParent(CBlock* a_oParent)
 
 void CBlock::calculateFGH(CBlock* a_oEnd)
 {
-
-	m_iH = abs(abs(a_oEnd->getY() - m_iY) - abs(a_oEnd->getX() - m_iX)) * 10;
-	m_iH += abs(a_oEnd->getX() - m_iX) * 15;
+	int iTemp = 0;
+	//m_iH = abs(abs(a_oEnd->getY() - m_iY) - abs(a_oEnd->getX() - m_iX)) * 10;
+	//m_iH += abs(a_oEnd->getX() - m_iX) * 15;
 	
+	iTemp = abs(a_oEnd->getY() - m_iY) > abs(a_oEnd->getX() - m_iX) ? abs(a_oEnd->getX() - m_iX) : abs(a_oEnd->getY() - m_iY);
+
+	m_iH = iTemp * 15;
+	m_iH += abs(abs(a_oEnd->getY() - m_iY) - abs(a_oEnd->getX() - m_iX)) * 10;
+
 	if (m_iX == m_oParent->getX() || m_iY == m_oParent->getY())
 	{
 		m_iG = m_oParent->getG() + 10;

@@ -188,15 +188,13 @@ string CTableAStar::solve()
 {
 	CBlock* oTempBlock;
 	m_oOL->push_back(m_poStartPoint);
+	int iCounter = 0;
 	while (!m_oOL->empty())
 	{
 		oTempBlock = findMinFFromOL();
 		removeOL(oTempBlock->getX(), oTempBlock->getY());
 		addCL(oTempBlock->getX(), oTempBlock->getY());
-		if (oTempBlock->getX() == 5 && oTempBlock->getY() == 6)
-		{
-			printTempState();
-		}
+		iCounter++;
 		if (oTempBlock == m_poEndPoint)
 		{
 			printResult();
@@ -225,7 +223,13 @@ string CTableAStar::solve()
 				}
 			}
 		}
+		/*if (oTempBlock->getX() == 5 && oTempBlock->getY() == 10)
+		{
+			printTempState();
+		}*/
 	}
+	printTempState();
+	cout << "Ilosc przejsc przez petle: " << iCounter << endl;
 	return m_strPath;
 }
 
@@ -314,8 +318,22 @@ void CTableAStar::printTempState()
 	{
 		for (int j = 0; j < m_iY; j++)
 		{
-			cout << m_poTable[i][j].getX() << " - " << m_poTable[i][j].getY() << " - F: " << m_poTable[i][j].getF()
-				<< " G: " << m_poTable[i][j].getG() << " H: " << m_poTable[i][j].getH() << endl;
+			cout << m_poTable[i][j].getX()+1 << " - " << m_poTable[i][j].getY()+1 << " - F: " << m_poTable[i][j].getF()
+				<< " G: " << m_poTable[i][j].getG() << " H: " << m_poTable[i][j].getH(); 
+			if (NULL != m_poTable[i][j].getParent())
+				cout << " P: " << m_poTable[i][j].getParent()->getX() + 1 << "-" << m_poTable[i][j].getParent()->getY() + 1 << endl  << endl;
+			else
+				cout << endl;
 		}
+	}
+	cout << "<<<<<<OL>>>>>>>" << endl;
+	for (int i = 0; i < m_oOL->size(); i++)
+	{
+		cout << m_oOL->at(i)->getX() + 1 << "-" << m_oOL->at(i)->getY() + 1 << endl << endl;
+	}
+	cout << "<<<<<<CL>>>>>>>" << endl;
+	for (int i = 0; i < m_oCL->size(); i++)
+	{
+		cout << m_oCL->at(i)->getX() + 1 << "-" << m_oCL->at(i)->getY() + 1 << endl << endl;
 	}
 }
