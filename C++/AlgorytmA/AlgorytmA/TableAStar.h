@@ -19,12 +19,12 @@ public:
 	void addCL(int, int);
 	void addCL(CBlock*);
 	void removeCL(int, int);
-	string solve();
+	void solve();
 	CBlock* findMinFFromOL();
 	void setNeighbours();
 	bool getCL(CBlock*);
 	bool getOL(CBlock*);
-	void printResult();
+	void printResult(int);
 	bool canMove(CBlock*, CBlock*);
 	void printTempState();
 private:

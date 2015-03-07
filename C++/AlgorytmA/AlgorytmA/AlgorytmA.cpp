@@ -17,6 +17,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	oTable->setWall(4, 9);
 	oTable->setWall(3, 8);
 	oTable->setWall(2, 9);
+	oTable->setWall(3, 10);
 	oTable->setNeighbours();
 	oTable->solve();
 

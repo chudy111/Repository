@@ -11,7 +11,14 @@ CTableAStar::CTableAStar()
 
 CTableAStar::~CTableAStar()
 {
-	
+	for (int i = 0; i < m_iY; i++)
+	{
+		delete m_poTable[i];
+	}
+	delete m_poTable;
+	delete m_oOL;
+	delete m_oCL;
+
 }
 
 void CTableAStar::setTable(int a_iX, int a_iY)
@@ -184,21 +191,21 @@ void CTableAStar::setNeighbours()
 }
 
 
-string CTableAStar::solve()
+void CTableAStar::solve()
 {
 	CBlock* oTempBlock;
-	m_oOL->push_back(m_poStartPoint);
+	addOL(m_poStartPoint);
 	int iCounter = 0;
 	while (!m_oOL->empty())
 	{
 		oTempBlock = findMinFFromOL();
 		removeOL(oTempBlock->getX(), oTempBlock->getY());
-		addCL(oTempBlock->getX(), oTempBlock->getY());
+		addCL(oTempBlock);
 		iCounter++;
 		if (oTempBlock == m_poEndPoint)
 		{
-			printResult();
-			break;
+			printResult(iCounter);
+			return;
 		}
 		for (auto i = 0; i < oTempBlock->getNeighbours()->size(); i++)
 		{	
@@ -228,9 +235,10 @@ string CTableAStar::solve()
 			printTempState();
 		}*/
 	}
-	printTempState();
-	cout << "Ilosc przejsc przez petle: " << iCounter << endl;
-	return m_strPath;
+	cout << "Brak rozwiazania" << endl;
+	//printTempState();
+	
+	return;
 }
 
 bool CTableAStar::getCL(CBlock* a_oBlock)
@@ -261,7 +269,7 @@ bool CTableAStar::getOL(CBlock* a_oBlock)
 	return bResult;
 }
 
-void CTableAStar::printResult()
+void CTableAStar::printResult(int a_iCounter)
 {
 	CBlock* oTemp = m_poEndPoint;
 	while (NULL != oTemp)
@@ -269,6 +277,7 @@ void CTableAStar::printResult()
 		cout << oTemp->getX() << " - " << oTemp->getY() <<  endl;
 		oTemp = oTemp->getParent();
 	}
+	cout << "Ilosc przejsc przez petle: " << a_iCounter << endl;
 }
 
 bool CTableAStar::canMove(CBlock* a_oBlock, CBlock* a_oNeighbour)
