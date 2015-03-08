@@ -72,7 +72,7 @@ void CTableAStar::addCL(CBlock* a_oBlock)
 
 void CTableAStar::removeOL(int a_iX, int a_iY)
 {
-	for (auto i = 0; i < m_oOL->size(); i++)
+	for (unsigned int i = 0; i < m_oOL->size(); i++)
 	{
 		if (m_oOL->at(i) == &(m_poTable[a_iX][a_iY]))
 		{
@@ -89,7 +89,7 @@ void CTableAStar::addCL(int a_iX, int a_iY)
 
 void CTableAStar::removeCL(int a_iX, int a_iY)
 {
-	for (auto i = 0; i < m_oCL->size(); i++)
+	for (unsigned int i = 0; i < m_oCL->size(); i++)
 	{
 		if (m_oCL->at(i) == &(m_poTable[a_iX][a_iY]))
 		{
@@ -102,7 +102,7 @@ void CTableAStar::removeCL(int a_iX, int a_iY)
 CBlock* CTableAStar::findMinFFromOL()
 {
 	CBlock* oMinBlock = m_oOL->at(0);
-	for (auto i = 0; i < m_oOL->size(); i++)
+	for (unsigned int i = 0; i < m_oOL->size(); i++)
 	{
 		if (oMinBlock->getF() >= m_oOL->at(i)->getF())
 		{
@@ -114,9 +114,9 @@ CBlock* CTableAStar::findMinFFromOL()
 
 void CTableAStar::setNeighbours()
 {
-	for (int i=0; i<m_iX; i++)
+	for (int i = 0; i<m_iX; i++)
 	{
-		for (int j=0; j<m_iY; j++)
+		for (int j = 0; j<m_iY; j++)
 		{
 			if (0 == i && 0 == j)
 			{
@@ -207,7 +207,7 @@ void CTableAStar::solve()
 			printResult(iCounter);
 			return;
 		}
-		for (auto i = 0; i < oTempBlock->getNeighbours()->size(); i++)
+		for (unsigned int i = 0; i < oTempBlock->getNeighbours()->size(); i++)
 		{	
 			if (getCL(oTempBlock->getNeighbours()->at(i)) || !canMove(oTempBlock,oTempBlock->getNeighbours()->at(i)))
 			{
@@ -244,7 +244,7 @@ void CTableAStar::solve()
 bool CTableAStar::getCL(CBlock* a_oBlock)
 {
 	bool bResult = false;
-	for (auto i = 0; i < m_oCL->size(); i++)
+	for (unsigned int i = 0; i < m_oCL->size(); i++)
 	{
 		if (m_oCL->at(i) == a_oBlock)
 		{
@@ -258,7 +258,7 @@ bool CTableAStar::getCL(CBlock* a_oBlock)
 bool CTableAStar::getOL(CBlock* a_oBlock)
 {
 	bool bResult = false;
-	for (auto i = 0; i < m_oOL->size(); i++)
+	for (unsigned int i = 0; i < m_oOL->size(); i++)
 	{
 		if (m_oOL->at(i) == a_oBlock)
 		{
@@ -336,12 +336,12 @@ void CTableAStar::printTempState()
 		}
 	}
 	cout << "<<<<<<OL>>>>>>>" << endl;
-	for (int i = 0; i < m_oOL->size(); i++)
+	for (unsigned int i = 0; i < m_oOL->size(); i++)
 	{
 		cout << m_oOL->at(i)->getX() + 1 << "-" << m_oOL->at(i)->getY() + 1 << endl << endl;
 	}
 	cout << "<<<<<<CL>>>>>>>" << endl;
-	for (int i = 0; i < m_oCL->size(); i++)
+	for (unsigned int i = 0; i < m_oCL->size(); i++)
 	{
 		cout << m_oCL->at(i)->getX() + 1 << "-" << m_oCL->at(i)->getY() + 1 << endl << endl;
 	}

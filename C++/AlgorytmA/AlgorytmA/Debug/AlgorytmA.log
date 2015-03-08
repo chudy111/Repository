@@ -1,24 +1,21 @@
-﻿Build started 2015-03-07 17:38:25.
-     1>Project "C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\AlgorytmA\AlgorytmA.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2015-03-07 22:09:51.
+     1>Project "C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\AlgorytmA\AlgorytmA.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\AlgorytmA.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TableAStar.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\AlgorytmA.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\AlgorytmA.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AlgorytmA.cpp Block.cpp TableAStar.cpp
          TableAStar.cpp
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(75): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(92): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(105): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(210): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(247): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(261): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(339): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\pawel\desktop\repository\c++\algorytma\algorytma\tableastar.cpp(344): warning C4018: '<' : signed/unsigned mismatch
+         Block.cpp
+         AlgorytmA.cpp
+         Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\Debug\AlgorytmA.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\Debug\AlgorytmA.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\Debug\AlgorytmA.lib" /MACHINE:X86 Debug\AlgorytmA.obj
          Debug\Block.obj
          Debug\stdafx.obj
          Debug\TableAStar.obj
          AlgorytmA.vcxproj -> C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\Debug\AlgorytmA.exe
-     1>Done Building Project "C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\AlgorytmA\AlgorytmA.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Pawel\Desktop\Repository\C++\AlgorytmA\AlgorytmA\AlgorytmA.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.61
+Time Elapsed 00:00:01.30
