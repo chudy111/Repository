@@ -1,0 +1,15 @@
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\AlgorytmGenetyczny.csproj.GenerateResource.Cache
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Pawel\documents\visual studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\AlgorytmGenetyczny.csprojResolveAssemblyReference.cache
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\AlgorytmGenetyczny.MainWindow.resources
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\AlgorytmGenetyczny.Properties.Resources.resources
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\AlgorytmGenetyczny\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\AlgorytmGenetyczny\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Pawel\Documents\Visual Studio 2013\Projects\AlgorytmGenetyczny\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\WindowsFormsApplication1.pdb
