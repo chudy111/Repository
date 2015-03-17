@@ -40,7 +40,7 @@ namespace AlgorytmGenetyczny
                 getMinP();
                 selekcja();
                 krzyzowanie();
-                //mutacja();
+                mutacja();
             }
         }
 
@@ -198,22 +198,32 @@ namespace AlgorytmGenetyczny
                     break;
                 }
             }
+            int index = dzielnik+1;
+            int idx = 1;
             if (powtorka)
             {
-                for (int j = 0; j < sciezka2.Length; j++)
+                for (index = dzielnik + 1; index < sciezka1.Length; index++)
                 {
-                    powtorka = false;
-                    for (k = 0; k < dzielnik + 1; k++)
+                    
+                    for (int j = 0; j < sciezka2.Length; j++)
                     {
-                        if (sciezka1[k] == sciezka2[j])
+                        powtorka = false;
+                        for (k = 0; k < dzielnik + idx; k++)
                         {
-                            powtorka = true;
-                            break;
+                            if (sciezka1[k] == sciezka2[j])
+                            {
+                                powtorka = true;
+                                break;
+                            }
                         }
-                    }
-                    if (!powtorka)
-                    {
-                        sciezka1[k] = sciezka2[j];
+                        if (!powtorka)
+                        {
+                            sciezka1[index] = sciezka2[j];
+                            idx++;
+                            break;
+
+                        }
+
                     }
                 }
             }
