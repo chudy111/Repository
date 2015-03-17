@@ -75,6 +75,13 @@ namespace AlgorytmGenetyczny
             {
                 wartoscPrzystosowania += miasta[sciezka[i]-1, sciezka[i + 1]-1];
             }
+            if (wartoscPrzystosowania < 150)
+                Console.Write("sdada");
+            wartoscPrzystosowania = 0;
+            for (int i = 0; i < sciezka.Length - 1; i++)
+            {
+                wartoscPrzystosowania += miasta[sciezka[i] - 1, sciezka[i + 1] - 1];
+            }
         }
         public void setWartoscP(double a_wartosc)
         {
@@ -92,9 +99,15 @@ namespace AlgorytmGenetyczny
         {
             sciezka = a_sciezka;
         }
-        public void setSciezka(int i, int num)
+        public void setSciezka(int j, int num)
         {
-            sciezka[i] = num;
+            for (int i = 0; i < sciezka.Length;i++ )
+            {
+                if (sciezka[i] == num)
+                    Console.Write("dsadsa");
+            }
+                sciezka[j] = num;
+            
         }
     }
 }

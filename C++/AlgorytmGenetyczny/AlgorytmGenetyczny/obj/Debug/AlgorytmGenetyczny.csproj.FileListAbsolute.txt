@@ -28,3 +28,9 @@ C:\Users\Paweł\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj
 C:\Users\Paweł\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.MainWindow.resources
 C:\Users\Paweł\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.Properties.Resources.resources
 C:\Users\Paweł\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.csproj.GenerateResource.Cache
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.csprojResolveAssemblyReference.cache
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.MainWindow.resources
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.Properties.Resources.resources
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Debug\AlgorytmGenetyczny.csproj.GenerateResource.Cache

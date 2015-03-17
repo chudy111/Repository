@@ -26,6 +26,22 @@ namespace AlgorytmGenetyczny
             y = 0;
         }
 
+        public void updateGraph(int a_y,int[] o)
+        {
+            y = a_y;
+            if (chart1.Series["Pawel"].Points.Count == 0 || min > y)
+            {
+                min = y;
+                for (int i = 0; i < 10; i++)
+                    Console.Write(o[i] + " ");
+                Console.Write("\n");
+                this.Invoke((MethodInvoker)delegate()
+                {
+                    textBox1.Text = min.ToString();
+                });
+            }
+            dodaj();
+        }
         public void updateGraph(int a_y)
         {
             y = a_y;
@@ -34,10 +50,8 @@ namespace AlgorytmGenetyczny
                 min = y;
                 this.Invoke((MethodInvoker)delegate()
                 {
-                    
                     textBox1.Text = min.ToString();
                 });
-               
             }
             dodaj();
         }

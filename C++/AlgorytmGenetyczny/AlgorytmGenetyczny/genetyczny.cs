@@ -28,6 +28,7 @@ namespace AlgorytmGenetyczny
             for (int i=0;i<a_populacja;i++)
             {
                 populacja[i] = new osobnik(gen.getX(), miasta);
+                populacja[i].losuj(rand);
             }
         }
 
@@ -39,7 +40,7 @@ namespace AlgorytmGenetyczny
                 getMinP();
                 selekcja();
                 krzyzowanie();
-                mutacja();
+                //mutacja();
             }
         }
 
@@ -48,7 +49,6 @@ namespace AlgorytmGenetyczny
             sumaWartosci = 0;
             for(int i=0;i<populacja.Length;i++)
             {
-                populacja[i].losuj(rand);
                 populacja[i].obliczWartoscP();
                 sumaWartosci += populacja[i].getWartoscP();
             }
@@ -57,14 +57,19 @@ namespace AlgorytmGenetyczny
         private void getMinP()
         {
             double min = populacja[0].getWartoscP();
+            osobnik minn=null;
             for (int i=0;i<populacja.Length;i++)
             {
                 if (min > populacja[i].getWartoscP())
                 {
                     min = populacja[i].getWartoscP();
+                    minn = populacja[i];
                 }
             }
-            window.updateGraph((int)min);
+            if (null != minn)
+                window.updateGraph((int)min, minn.getSciezka());
+            else
+                window.updateGraph((int)min);
         }
         private double sumaWartosciMianownik()
         {
@@ -182,7 +187,7 @@ namespace AlgorytmGenetyczny
             {
                 for (k=0;k<dzielnik+1;k++)
                 {
-                    if (sciezka1[k] == sciezka2[j])
+                    if (sciezka1[j] == sciezka2[k])
                     {
                         powtorka = true;
                         break;
@@ -217,6 +222,16 @@ namespace AlgorytmGenetyczny
                 for (int j = dzielnik + 1; j < sciezka2.Length;j++ )
                 {
                     sciezka1[j] = sciezka2[j];
+                }
+            }
+            for (int i = 0; i < sciezka2.Length; i++)
+            {
+                for (int j = 0; j < sciezka2.Length; j++)
+                {
+                    if (i==j)
+                        continue;
+                    if (sciezka1[i] == sciezka1[j])
+                        Console.Write("da");
                 }
             }
             return sciezka1;
