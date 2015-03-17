@@ -15,6 +15,7 @@ namespace AlgorytmGenetyczny
     {
         double x, y;
         Thread m_oThread;
+        private double min;
         public MainWindow()
         {
             InitializeComponent();
@@ -25,10 +26,24 @@ namespace AlgorytmGenetyczny
             y = 0;
         }
 
+        public void updateGraph(int a_y)
+        {
+            y = a_y;
+            if (chart1.Series["Pawel"].Points.Count == 0 || min > y)
+            {
+                min = y;
+                this.Invoke((MethodInvoker)delegate()
+                {
+                    
+                    textBox1.Text = min.ToString();
+                });
+               
+            }
+            dodaj();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            m_oThread = new Thread(SampleFunction);
-            m_oThread.Start();
+            m_oThread.Abort();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -36,38 +51,24 @@ namespace AlgorytmGenetyczny
             //generator gen = new generator();
             //gen.createNew();
             //gen.loadFromFile();
-
-            genetyczny gen = new genetyczny(50);
-            gen.solve();
+            x = 0;
+            foreach (var series in chart1.Series)
+            {
+                series.Points.Clear();
+            }
+            genetyczny gen = new genetyczny((int)numericUpDown3.Value, (int)numericUpDown2.Value
+                , (int)numericUpDown1.Value, this);
+            m_oThread = new Thread(gen.solve);
+            m_oThread.Start();
         }
 
-        void SampleFunction()
+        void dodaj()
         {
-            int x = 0;
-            Random rm = new Random();
-            int y = 0;
-            // Gets executed on a seperate thread and 
-            // doesn't block the UI while sleeping
-            for (int i = 0; i < 500; i++)
-            {
-                if (5 < rm.Next(1, 11))
-                {
-                    x++;
-                    y++;
-                }
-                else
-                {
-                    x++;
-                    y--;
-                }
                 this.Invoke((MethodInvoker)delegate()
                 {
-                    chart1.Series["Pawel"].Points.AddXY(x, y);
-                    
+                    chart1.Series["Pawel"].Points.AddXY(x++, y);    
                 });
-                Thread.Sleep(100);
-               
-            }
+                Thread.Sleep(50);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -8,11 +8,20 @@ namespace AlgorytmGenetyczny
 {
     class genetyczny
     {
+        private int iteracje;
+        MainWindow window;
+        private int mutacjaSzansa;
+        Random rand;
         private int[,] miasta;
         private osobnik[] populacja;
         private double sumaWartosci;
-        public genetyczny(int a_populacja)
+        public genetyczny(int a_populacja, int a_mutacja,int a_iteracje, MainWindow a_window)
         {
+
+            iteracje = a_iteracje;
+            window = a_window;
+            mutacjaSzansa = a_mutacja;
+            rand = new Random();
             generator gen = new generator();
             miasta = gen.loadFromFile();
             populacja = new osobnik[a_populacja];
@@ -24,21 +33,38 @@ namespace AlgorytmGenetyczny
 
         public void solve()
         {
-            obliczWartoscP();
-            selekcja();
-            krzyzowanie();
+            for (int i = 0; i < iteracje; i++)
+            {
+                obliczWartoscP();
+                getMinP();
+                selekcja();
+                krzyzowanie();
+                mutacja();
+            }
         }
 
         private void obliczWartoscP()
         {
             sumaWartosci = 0;
-            Random rand = new Random();
             for(int i=0;i<populacja.Length;i++)
             {
                 populacja[i].losuj(rand);
                 populacja[i].obliczWartoscP();
                 sumaWartosci += populacja[i].getWartoscP();
             }
+        }
+
+        private void getMinP()
+        {
+            double min = populacja[0].getWartoscP();
+            for (int i=0;i<populacja.Length;i++)
+            {
+                if (min > populacja[i].getWartoscP())
+                {
+                    min = populacja[i].getWartoscP();
+                }
+            }
+            window.updateGraph((int)min);
         }
         private double sumaWartosciMianownik()
         {
@@ -52,7 +78,7 @@ namespace AlgorytmGenetyczny
         }
         private void selekcja()
         {
-            Random rand = new Random();
+            
             osobnik[] temp = new osobnik[populacja.Length];
             double suma = sumaWartosciMianownik();
             double[] wartosci = new double[populacja.Length];
@@ -111,7 +137,6 @@ namespace AlgorytmGenetyczny
 
         private void krzyzowanie()
         {
-            Random rand = new Random();
             osobnik[,] pary = new osobnik[populacja.Length/2,2];
             int temp;
             List<int> index = new List<int>();
@@ -122,21 +147,100 @@ namespace AlgorytmGenetyczny
             int left = populacja.Length;
             for (int i = 0; i < populacja.Length / 2; i++)
             {
-                temp = rand.Next(1, left + 1);
+                temp = rand.Next(0, left);
                 pary[i,0] = populacja[index.ElementAt(temp)];
+                index.RemoveAt(temp);
                 left--;
-                temp = rand.Next(1, left + 1);
+                temp = rand.Next(0, left);
                 pary[i, 1] = populacja[index.ElementAt(temp)];
-                index.RemoveAt(temp - 1);
+                index.RemoveAt(temp);
                 left--;
             }
-            int dzielnik = rand.Next(1, miasta.GetLength(1));
-            for (int i=0;i<populacja.Length / 2; i++)
-            {
+            
+            for (int i=0;i<pary.GetLength(1); i++)
+            {                
                 int[] sciezka1 = pary[i, 0].getSciezka();
                 int[] sciezka2 = pary[i, 1].getSciezka();
+                pary[i,0].setSciezka(krzyzujSciezke(sciezka1,sciezka2));
+                pary[i,1].setSciezka(krzyzujSciezke(sciezka2,sciezka1));
+            }
+            int k = 0;
+            for (int i=1;i<populacja.Length;i=i+2)
+            {
+                populacja[i - 1] = pary[k, 0];
+                populacja[i] = pary[k, 1];
+                k++;
+            }
+        }
 
+        private int[] krzyzujSciezke(int[] sciezka1, int[] sciezka2)
+        {
+            int k;
+            int dzielnik = rand.Next(1, miasta.GetLength(1)-1);
+            bool powtorka = false;
+            for (int j = dzielnik+1;j<sciezka1.Length;j++)
+            {
+                for (k=0;k<dzielnik+1;k++)
+                {
+                    if (sciezka1[k] == sciezka2[j])
+                    {
+                        powtorka = true;
+                        break;
+                    }
+                }
+                if (powtorka)
+                {
+                    break;
+                }
+            }
+            if (powtorka)
+            {
+                for (int j = 0; j < sciezka2.Length; j++)
+                {
+                    powtorka = false;
+                    for (k = 0; k < dzielnik + 1; k++)
+                    {
+                        if (sciezka1[k] == sciezka2[j])
+                        {
+                            powtorka = true;
+                            break;
+                        }
+                    }
+                    if (!powtorka)
+                    {
+                        sciezka1[k] = sciezka2[j];
+                    }
+                }
+            }
+            else
+            {
+                for (int j = dzielnik + 1; j < sciezka2.Length;j++ )
+                {
+                    sciezka1[j] = sciezka2[j];
+                }
+            }
+            return sciezka1;
+        }
+
+        public void mutacja()
+        {
+            for (int i=0;i<populacja.Length;i++)
+            {
+                if (mutacjaSzansa >= rand.Next(0, 101))
+                {
+                    int temp1 = rand.Next(0, populacja[i].getSciezka().Length);
+                    int temp2;
+                    do
+                    {
+                        temp2 = rand.Next(0, populacja[i].getSciezka().Length);
+                    } while (temp1 == temp2);
+                    int num1 = populacja[i].getSciezka()[temp1];
+                    int num2 = populacja[i].getSciezka()[temp2];
+                    populacja[i].setSciezka(temp1, num2);
+                    populacja[i].setSciezka(temp2, num1);
+                }
             }
         }
     }
+ 
 }

@@ -92,5 +92,9 @@ namespace AlgorytmGenetyczny
         {
             sciezka = a_sciezka;
         }
+        public void setSciezka(int i, int num)
+        {
+            sciezka[i] = num;
+        }
     }
 }
