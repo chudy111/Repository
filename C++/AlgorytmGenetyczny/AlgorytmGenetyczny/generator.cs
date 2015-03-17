@@ -64,15 +64,6 @@ namespace AlgorytmGenetyczny
                     m_iMatrix[i, j] = int.Parse(line[j]);
                 }
             }
-            for (int i = 0; i < x; i++)
-            {
-                for (int j = 0; j < x; j++)
-                {
-                    Console.Write(m_iMatrix[i, j] + " ");
-
-                }
-                Console.Write("\n");
-            }
             return m_iMatrix;
         }
     }
