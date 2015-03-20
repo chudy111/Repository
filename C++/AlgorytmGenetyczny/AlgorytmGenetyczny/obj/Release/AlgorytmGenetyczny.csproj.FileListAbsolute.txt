@@ -1,0 +1,9 @@
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Release\WindowsFormsApplication1.exe.config
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Release\WindowsFormsApplication1.exe
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\bin\Release\WindowsFormsApplication1.pdb
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\AlgorytmGenetyczny.csprojResolveAssemblyReference.cache
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\AlgorytmGenetyczny.MainWindow.resources
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\AlgorytmGenetyczny.Properties.Resources.resources
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\AlgorytmGenetyczny.csproj.GenerateResource.Cache
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\WindowsFormsApplication1.exe
+C:\Users\Pawel\Desktop\Repository\C++\AlgorytmGenetyczny\AlgorytmGenetyczny\obj\Release\WindowsFormsApplication1.pdb

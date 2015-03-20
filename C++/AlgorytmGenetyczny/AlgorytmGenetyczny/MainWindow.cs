@@ -32,11 +32,14 @@ namespace AlgorytmGenetyczny
             if (chart1.Series["Pawel"].Points.Count == 0 || min > y)
             {
                 min = y;
-                for (int i = 0; i < 10; i++)
-                    Console.Write(o[i] + " ");
-                Console.Write("\n");
                 this.Invoke((MethodInvoker)delegate()
                 {
+                    String text = "";
+                    for (int i = 0; i < 10; i++)
+                    {
+                        text += o[i] + " ";
+                    }
+                    textBox2.Text = text;
                     textBox1.Text = min.ToString();
                 });
             }

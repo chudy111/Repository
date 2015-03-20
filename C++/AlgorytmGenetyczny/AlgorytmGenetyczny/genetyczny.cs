@@ -57,7 +57,7 @@ namespace AlgorytmGenetyczny
         private void getMinP()
         {
             double min = populacja[0].getWartoscP();
-            osobnik minn=null;
+            osobnik minn = populacja[0];
             for (int i=0;i<populacja.Length;i++)
             {
                 if (min > populacja[i].getWartoscP())
@@ -240,8 +240,6 @@ namespace AlgorytmGenetyczny
                 {
                     if (i==j)
                         continue;
-                    if (sciezka1[i] == sciezka1[j])
-                        Console.Write("da");
                 }
             }
             return sciezka1;

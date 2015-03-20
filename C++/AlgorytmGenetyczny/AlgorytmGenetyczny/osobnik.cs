@@ -101,12 +101,7 @@ namespace AlgorytmGenetyczny
         }
         public void setSciezka(int j, int num)
         {
-            for (int i = 0; i < sciezka.Length;i++ )
-            {
-                if (sciezka[i] == num)
-                    Console.Write("dsadsa");
-            }
-                sciezka[j] = num;
+            sciezka[j] = num;
             
         }
     }
